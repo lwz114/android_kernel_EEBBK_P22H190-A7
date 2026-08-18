@@ -521,6 +521,8 @@ static long sprd_sensor_file_ioctl(struct file *file, unsigned int cmd,
 		ret = copy_from_user(&p_file->sensor_id, (unsigned int *)arg,
 				     sizeof(unsigned int));
 		pr_debug("sensor id %d cmd 0x%x\n", p_file->sensor_id, cmd);
+		if (!ret)
+			sprd_pull_i2c_gpio(p_file->sensor_id, 1);
 		charger_set_fchg_status(0);
 		mutex_unlock(&p_mod->sensor_id_lock);
 	}
@@ -686,6 +688,7 @@ static int sprd_sensor_file_release(struct inode *node, struct file *file)
 /*		wake_unlock(&p_mod->wakelock);*/
 		__pm_relax(&p_mod->ws);
 	}
+	sprd_pull_i2c_gpio(p_file->sensor_id, 0);
 	kfree(p_file);
 	p_file = NULL;
 	file->private_data = NULL;

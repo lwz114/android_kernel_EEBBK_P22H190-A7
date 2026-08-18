@@ -833,6 +833,36 @@ int sprd_sensor_set_mipi_level(int sensor_id, uint32_t plus_level)
 	return ret;
 }
 
+/* P22 camera routing needs the two I2C pads pulled up before probing. */
+int sprd_pull_i2c_gpio(int sensor_id, int enable)
+{
+	void __iomem *base;
+	phys_addr_t addr;
+	u32 value;
+
+	switch (sensor_id) {
+	case SPRD_SENSOR_MAIN_ID_E:
+		addr = 0x324505d4;
+		break;
+	case SPRD_SENSOR_SUB_ID_E:
+		addr = 0x324505cc;
+		break;
+	default:
+		return 0;
+	}
+
+	base = ioremap(addr, 0x80);
+	if (!base)
+		return 0;
+
+	value = enable ? 0x00083088 : 0x00082044;
+	writel(value, base);
+	writel(value, base + 4);
+	iounmap(base);
+
+	return 0;
+}
+
 int sprd_sensor_set_i2c_addr(int sensor_id, uint16_t i2c_addr)
 {
 	struct sprd_sensor_dev_info_tag *p_dev = NULL;

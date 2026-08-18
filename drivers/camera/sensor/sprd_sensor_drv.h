@@ -85,6 +85,7 @@ int sprd_sensor_set_pd_level(int sensor_id, int power_level);
 int sprd_sensor_reset(int sensor_id, unsigned int level, unsigned int width);
 int sprd_sensor_set_rst_level(int sensor_id, uint32_t rst_level);
 int sprd_sensor_set_mipi_level(int sensor_id, uint32_t plus_level);
+int sprd_pull_i2c_gpio(int sensor_id, int enable);
 int sprd_sensor_set_i2c_addr(int sensor_id, uint16_t i2c_addr);
 int sprd_sensor_set_i2c_clk(int sensor_id, uint32_t clock);
 int sprd_sensor_read_reg(int sensor_id, struct sensor_reg_bits_tag *pReg);
