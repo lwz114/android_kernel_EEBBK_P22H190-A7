@@ -225,6 +225,4 @@ source "drivers/wcn/Kconfig"
 
 source "drivers/camera/Kconfig"
 
-source "drivers/kernelsu/Kconfig"
-
 endmenu

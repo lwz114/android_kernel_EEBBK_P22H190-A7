@@ -1,0 +1,675 @@
+  CHK     include/config/kernel.release
+  CHK     include/generated/uapi/linux/version.h
+  CHK     include/generated/utsrelease.h
+  DESCEND  objtool
+  CHK     include/generated/timeconst.h
+  CHK     scripts/mod/devicetable-offsets.h
+  CHK     include/generated/bounds.h
+  CHK     include/generated/asm-offsets.h
+  CALL    scripts/checksyscalls.sh
+  CHK     include/generated/compile.h
+  CHK     kernel/config_data.h
+  CHK     kernel/kheaders_data.tar.xz
+  AR      crypto/rsa_generic.o
+  CC      block/bio.o
+  AR      crypto/jitterentropy_rng.o
+  AR      test/built-in.o
+  CC      crypto/asymmetric_keys/asymmetric_type.o
+  CC      block/elevator.o
+  CC      fs/overlayfs/util.o
+  CC      fs/overlayfs/inode.o
+  CC      crypto/asymmetric_keys/restrict.o
+  CC      crypto/asymmetric_keys/signature.o
+  CC      fs/overlayfs/dir.o
+  CC      crypto/asymmetric_keys/public_key.o
+  CC      fs/proc/task_mmu.o
+  CC      block/blk-core.o
+  CC      fs/overlayfs/readdir.o
+  ASN.1   crypto/asymmetric_keys/x509-asn1.c
+  ASN.1   crypto/asymmetric_keys/x509_akid-asn1.c
+  CC      crypto/asymmetric_keys/x509_public_key.o
+  ASN.1   crypto/asymmetric_keys/pkcs7-asn1.c
+  CC      crypto/asymmetric_keys/pkcs7_trust.o
+  CC      fs/proc/inode.o
+  CC      fs/overlayfs/copy_up.o
+  CC      crypto/asymmetric_keys/pkcs7_verify.o
+  CC      fs/proc/root.o
+  AR      crypto/asymmetric_keys/asymmetric_keys.o
+  CC      crypto/asymmetric_keys/x509-asn1.o
+  AR      fs/overlayfs/overlay.o
+  AR      fs/overlayfs/built-in.o
+  CC      crypto/asymmetric_keys/x509_akid-asn1.o
+  CC      crypto/asymmetric_keys/x509_cert_parser.o
+  CC      fs/proc/base.o
+  AR      drivers/amba/built-in.o
+  CC      drivers/android/binderfs.o
+  CC      crypto/asymmetric_keys/pkcs7-asn1.o
+  CC      crypto/asymmetric_keys/pkcs7_parser.o
+  CC      drivers/android/binder.o
+  AR      crypto/asymmetric_keys/x509_key_parser.o
+  AR      crypto/asymmetric_keys/pkcs7_message.o
+  AR      crypto/asymmetric_keys/built-in.o
+  CC      crypto/hash_info.o
+  CC      block/blk-tag.o
+  CC [M]  crypto/crypto_engine.o
+  CC      fs/proc/generic.o
+  AR      crypto/built-in.o
+  AR      drivers/auxdisplay/built-in.o
+  CC      block/blk-sysfs.o
+  CC      drivers/base/component.o
+  CC      fs/proc/array.o
+  CC      drivers/base/core.o
+  CC      block/blk-flush.o
+  CC      fs/proc/fd.o
+  CC      block/blk-settings.o
+  CC      fs/proc/proc_tty.o
+  CC      fs/proc/cmdline.o
+  CC      fs/proc/consoles.o
+  CC      block/blk-ioc.o
+  CC      fs/proc/cpuinfo.o
+  CC      drivers/base/bus.o
+  CC      drivers/android/binder_alloc.o
+  CC      fs/proc/devices.o
+  CC      fs/proc/interrupts.o
+  CC      block/blk-map.o
+  CC      fs/proc/loadavg.o
+  CC      drivers/base/dd.o
+  AR      drivers/android/built-in.o
+  CC      fs/pstore/inode.o
+  CC      fs/proc/meminfo.o
+  CC      block/blk-exec.o
+  CC      drivers/base/syscore.o
+  CC      fs/proc/stat.o
+  CC      fs/pstore/platform.o
+  CC      fs/proc/uptime.o
+  CC      block/blk-merge.o
+  CC      fs/proc/version.o
+  CC      fs/pstore/pmsg.o
+  CC      drivers/base/driver.o
+  CC      fs/proc/softirqs.o
+  CC      fs/pstore/ram.o
+  CC      fs/proc/namespaces.o
+  CC      drivers/base/class.o
+  CC      fs/proc/self.o
+  CC      block/blk-softirq.o
+  CC      fs/pstore/ram_core.o
+  CC      drivers/base/platform.o
+  CC      fs/proc/thread_self.o
+  CC      block/blk-timeout.o
+  CC      fs/proc/uid.o
+  AR      fs/pstore/pstore.o
+  AR      fs/pstore/ramoops.o
+  AR      fs/pstore/built-in.o
+  CC      sound/sound_core.o
+  CC      fs/proc/proc_sysctl.o
+  AR      sound/arm/built-in.o
+  CC      drivers/base/cpu.o
+  AR      sound/atmel/built-in.o
+  CC      block/blk-lib.o
+  CC      sound/core/sound.o
+  CC      drivers/base/firmware.o
+  CC      sound/core/init.o
+  CC      block/blk-mq.o
+  CC      drivers/base/init.o
+  CC      drivers/base/map.o
+  CC      fs/proc/proc_net.o
+  CC      drivers/base/devres.o
+  CC      sound/core/memory.o
+  CC      sound/core/control.o
+  CC      fs/proc/kmsg.o
+  CC      fs/proc/page.o
+  CC      drivers/base/attribute_container.o
+  CC      fs/proc/protect_lru.o
+  CC      drivers/base/transport_class.o
+  CC      block/blk-mq-tag.o
+  CC      sound/core/misc.o
+  CC      drivers/base/topology.o
+  CC      sound/core/device.o
+  AR      fs/proc/proc.o
+  AR      fs/proc/built-in.o
+  CC      drivers/base/container.o
+  CC      block/blk-stat.o
+  CC      fs/quota/dquot.o
+  CC      drivers/base/property.o
+  CC      sound/core/info.o
+  CC      block/blk-mq-sysfs.o
+  CC      sound/core/isadma.o
+  CC      block/blk-mq-cpumap.o
+  CC      drivers/base/cacheinfo.o
+  CC      sound/core/ctljack.o
+  CC      fs/quota/quota_v2.o
+  CC      sound/core/jack.o
+  CC      drivers/base/devcon.o
+  CC      block/blk-mq-sched.o
+  CC      fs/quota/quota_tree.o
+  CC      drivers/base/power/sysfs.o
+  CC      sound/core/hwdep.o
+  CC      fs/quota/quota.o
+  CC      drivers/base/power/generic_ops.o
+  CC      block/ioctl.o
+  CC      sound/core/timer.o
+  CC      fs/quota/kqid.o
+  CC      drivers/base/power/common.o
+  CC      block/genhd.o
+  CC      fs/quota/netlink.o
+  CC      drivers/base/power/qos.o
+  AR      fs/quota/built-in.o
+  CC      sound/core/pcm.o
+  CC      fs/ramfs/inode.o
+  CC      block/partition-generic.o
+  CC      fs/ramfs/file-mmu.o
+  CC      drivers/base/power/runtime.o
+  AR      fs/ramfs/ramfs.o
+  AR      fs/ramfs/built-in.o
+  CC      fs/sdcardfs/dentry.o
+  CC      sound/core/pcm_native.o
+  CC      fs/sdcardfs/file.o
+  CC      block/ioprio.o
+  CC      drivers/base/power/wakeirq.o
+  CC      fs/sdcardfs/inode.o
+  CC      drivers/base/power/main.o
+  CC      block/badblocks.o
+  CC      fs/sdcardfs/main.o
+  CC      block/partitions/check.o
+  CC      sound/core/pcm_lib.o
+  CC      fs/sdcardfs/super.o
+  CC      block/partitions/msdos.o
+  CC      drivers/base/power/wakeup.o
+  CC      fs/sdcardfs/lookup.o
+  CC      block/partitions/efi.o
+  CC      fs/sdcardfs/mmap.o
+  CC      fs/sdcardfs/packagelist.o
+  AR      block/partitions/built-in.o
+  CC      block/bounce.o
+  CC      sound/core/pcm_misc.o
+  CC      drivers/base/power/wakeup_stats.o
+  CC      block/scsi_ioctl.o
+  CC      drivers/base/power/opp/core.o
+  CC      sound/core/pcm_memory.o
+  CC      fs/sdcardfs/derived_perm.o
+  CC      block/blk-cgroup.o
+  CC      sound/core/memalloc.o
+  CC      drivers/base/power/opp/cpu.o
+  AR      fs/sdcardfs/sdcardfs.o
+  AR      fs/sdcardfs/built-in.o
+  CC      fs/sysfs/file.o
+  CC      drivers/base/power/opp/of.o
+  CC      sound/core/pcm_timer.o
+  CC      sound/core/sgbuf.o
+  CC      fs/sysfs/dir.o
+  CC      block/blk-throttle.o
+  AR      drivers/base/power/opp/built-in.o
+  AR      drivers/base/power/built-in.o
+  CC      drivers/base/regmap/regmap.o
+  CC      fs/sysfs/symlink.o
+  CC      sound/core/rawmidi.o
+  CC      fs/sysfs/mount.o
+  CC      fs/sysfs/group.o
+  CC      block/noop-iosched.o
+  AR      sound/core/snd.o
+  AR      sound/core/snd-hwdep.o
+  AR      sound/core/snd-timer.o
+  AR      sound/core/snd-pcm.o
+  AR      fs/sysfs/built-in.o
+  AR      sound/core/snd-rawmidi.o
+  AR      sound/core/built-in.o
+  CC      fs/tracefs/inode.o
+  AR      sound/drivers/mpu401/built-in.o
+  CC      block/cfq-iosched.o
+  AR      sound/drivers/opl3/built-in.o
+  AR      sound/drivers/opl4/built-in.o
+  AR      sound/drivers/pcsp/built-in.o
+  AR      sound/drivers/vx/built-in.o
+  AR      sound/drivers/built-in.o
+  AR      sound/firewire/built-in.o
+  AR      sound/hda/built-in.o
+  AR      sound/i2c/other/built-in.o
+  AR      sound/i2c/built-in.o
+  AR      sound/isa/ad1816a/built-in.o
+  AR      sound/isa/ad1848/built-in.o
+  AR      sound/isa/cs423x/built-in.o
+  AR      sound/isa/es1688/built-in.o
+  AR      sound/isa/galaxy/built-in.o
+  AR      sound/isa/gus/built-in.o
+  AR      sound/isa/msnd/built-in.o
+  AR      sound/isa/opti9xx/built-in.o
+  AR      sound/isa/sb/built-in.o
+  AR      sound/isa/wavefront/built-in.o
+  AR      sound/isa/wss/built-in.o
+  AR      sound/isa/built-in.o
+  AR      sound/mips/built-in.o
+  AR      sound/parisc/built-in.o
+  AR      sound/pci/ac97/built-in.o
+  AR      fs/tracefs/tracefs.o
+  AR      sound/pci/ali5451/built-in.o
+  AR      fs/tracefs/built-in.o
+  AR      sound/pci/asihpi/built-in.o
+  SHIPPED fs/unicode/utf8data.h
+  AR      sound/pci/au88x0/built-in.o
+  CC      fs/unicode/utf8-core.o
+  AR      sound/pci/aw2/built-in.o
+  AR      sound/pci/ca0106/built-in.o
+  AR      sound/pci/cs46xx/built-in.o
+  AR      sound/pci/cs5535audio/built-in.o
+  AR      sound/pci/ctxfi/built-in.o
+  AR      sound/pci/echoaudio/built-in.o
+  AR      sound/pci/emu10k1/built-in.o
+  AR      sound/pci/hda/built-in.o
+  AR      sound/pci/ice1712/built-in.o
+  AR      sound/pci/korg1212/built-in.o
+  AR      sound/pci/lola/built-in.o
+  CC      drivers/base/regmap/regcache.o
+  AR      sound/pci/lx6464es/built-in.o
+  AR      sound/pci/mixart/built-in.o
+  AR      sound/pci/nm256/built-in.o
+  AR      sound/pci/oxygen/built-in.o
+  AR      sound/pci/pcxhr/built-in.o
+  AR      sound/pci/riptide/built-in.o
+  AR      sound/pci/rme9652/built-in.o
+  AR      sound/pci/trident/built-in.o
+  AR      sound/pci/vx222/built-in.o
+  AR      sound/pci/ymfpci/built-in.o
+  AR      sound/pci/built-in.o
+  AR      sound/pcmcia/pdaudiocf/built-in.o
+  AR      sound/pcmcia/vx/built-in.o
+  AR      sound/pcmcia/built-in.o
+  CC      fs/unicode/utf8-norm.o
+  AR      sound/ppc/built-in.o
+  AR      sound/sh/built-in.o
+  CC      sound/soc/soc-core.o
+  CC      drivers/base/regmap/regcache-rbtree.o
+  AR      fs/unicode/unicode.o
+  AR      fs/unicode/built-in.o
+  CC      fs/verity/enable.o
+  CC      block/mq-deadline.o
+  CC      drivers/base/regmap/regcache-flat.o
+  CC      block/kyber-iosched.o
+  CC      drivers/base/regmap/regmap-i2c.o
+  CC      fs/verity/hash_algs.o
+  CC      drivers/base/regmap/regmap-spi.o
+  CC      block/blk-mq-virtio.o
+  CC      fs/verity/init.o
+  CC      fs/verity/measure.o
+  CC      drivers/base/regmap/regmap-mmio.o
+  CC      block/keyslot-manager.o
+  CC      sound/soc/soc-dapm.o
+  CC      fs/verity/open.o
+  AR      drivers/base/regmap/built-in.o
+  AR      drivers/base/test/built-in.o
+  CC      drivers/base/dma-mapping.o
+  CC      fs/verity/verify.o
+  CC      block/bio-crypt-ctx.o
+  CC      fs/verity/signature.o
+  CC      drivers/base/firmware_class.o
+  CC      block/blk-crypto.o
+  AR      fs/verity/built-in.o
+  CC      fs/eventpoll.o
+  CC      block/blk-crypto-fallback.o
+  CC      sound/soc/soc-jack.o
+  CC      drivers/base/module.o
+  AR      drivers/base/built-in.o
+  CC      drivers/block/brd.o
+  CC      fs/anon_inodes.o
+  AR      block/built-in.o
+  AR      firmware/built-in.o
+  CC      drivers/block/loop.o
+  AR      sound/sparc/built-in.o
+  CC      fs/signalfd.o
+  CC      drivers/block/zram/zcomp.o
+  CC      sound/soc/soc-cache.o
+  CC      drivers/block/zram/zram_drv.o
+  CC      sound/soc/soc-utils.o
+  CC      fs/timerfd.o
+In file included from ./include/linux/printk.h:7,
+                 from ./include/linux/kernel.h:14,
+                 from ./include/linux/list.h:9,
+                 from ./include/linux/module.h:9,
+                 from drivers/block/zram/zram_drv.c:18:
+drivers/block/zram/zram_drv.c: 在函数‘zram_e_show_mem_cb’中:
+./include/linux/kern_levels.h:5:25: warning: 格式 ‘%lu’ expects argument of type ‘long unsigned int’, but argument 2 has type ‘s64’ {或称 ‘long long int’} [-Wformat=]
+    5 | #define KERN_SOH        "\001"          /* ASCII Start Of Header */
+      |                         ^~~~~~
+./include/linux/kern_levels.h:14:25: note: in expansion of macro ‘KERN_SOH’
+   14 | #define KERN_INFO       KERN_SOH "6"    /* informational */
+      |                         ^~~~~~~~
+./include/linux/printk.h:313:16: note: in expansion of macro ‘KERN_INFO’
+  313 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+      |                ^~~~~~~~~
+drivers/block/zram/zram_drv.c:1893:9: note: in expansion of macro ‘pr_info’
+ 1893 |         pr_info("        orig: %lu pages,  %lu kB\n",
+      |         ^~~~~~~
+./include/linux/kern_levels.h:5:25: warning: 格式 ‘%lu’ expects argument of type ‘long unsigned int’, but argument 3 has type ‘s64’ {或称 ‘long long int’} [-Wformat=]
+    5 | #define KERN_SOH        "\001"          /* ASCII Start Of Header */
+      |                         ^~~~~~
+./include/linux/kern_levels.h:14:25: note: in expansion of macro ‘KERN_SOH’
+   14 | #define KERN_INFO       KERN_SOH "6"    /* informational */
+      |                         ^~~~~~~~
+./include/linux/printk.h:313:16: note: in expansion of macro ‘KERN_INFO’
+  313 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+      |                ^~~~~~~~~
+drivers/block/zram/zram_drv.c:1893:9: note: in expansion of macro ‘pr_info’
+ 1893 |         pr_info("        orig: %lu pages,  %lu kB\n",
+      |         ^~~~~~~
+./include/linux/kern_levels.h:5:25: warning: 格式 ‘%lu’ expects argument of type ‘long unsigned int’, but argument 2 has type ‘s64’ {或称 ‘long long int’} [-Wformat=]
+    5 | #define KERN_SOH        "\001"          /* ASCII Start Of Header */
+      |                         ^~~~~~
+./include/linux/kern_levels.h:14:25: note: in expansion of macro ‘KERN_SOH’
+   14 | #define KERN_INFO       KERN_SOH "6"    /* informational */
+      |                         ^~~~~~~~
+./include/linux/printk.h:313:16: note: in expansion of macro ‘KERN_INFO’
+  313 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+      |                ^~~~~~~~~
+drivers/block/zram/zram_drv.c:1896:9: note: in expansion of macro ‘pr_info’
+ 1896 |         pr_info("        compressed: %lu kB\n",
+      |         ^~~~~~~
+  AR      drivers/bus/built-in.o
+  CC      sound/soc/soc-pcm.o
+  CC      fs/eventfd.o
+  AR      drivers/block/zram/zram.o
+  AR      drivers/block/zram/built-in.o
+  CC      arch/x86/power/cpu.o
+  AR      drivers/block/built-in.o
+  AR      drivers/camera/built-in.o
+  AR      drivers/camera/core/built-in.o
+  CC [M]  drivers/camera/core/isp2.6/src/cam_block.o
+  CC [M]  drivers/camera/core/isp2.6/src/cam_buf.o
+In file included from drivers/camera/core/isp2.6/src/cam_buf.c:20:
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_pool_show’中:
+./include/linux/sprd_iommu.h:139:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  139 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:137:6: note: 在此声明
+  137 | void sprd_iommu_pool_show(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~~
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_reg_dump’中:
+./include/linux/sprd_iommu.h:144:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  144 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:142:6: note: 在此声明
+  142 | void sprd_iommu_reg_dump(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_reg_show’中:
+./include/linux/sprd_iommu.h:149:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  149 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:147:6: note: 在此声明
+  147 | void sprd_iommu_reg_show(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~
+drivers/camera/core/isp2.6/src/cam_buf.c: 在函数‘cam_buf_iommu_single_page_map’中:
+drivers/camera/core/isp2.6/src/cam_buf.c:130:31: error: 隐式声明函数‘sprd_iommu_map_single_page’ [-Werror=implicit-function-declaration]
+  130 |                         ret = sprd_iommu_map_single_page(dev_info->dev, &iommu_data);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~~~
+  AR      arch/x86/power/built-in.o
+  CC      fs/aio.o
+  CC [M]  drivers/camera/core/isp2.6/src/cam_core.o
+cc1: some warnings being treated as errors
+make[3]: *** [scripts/Makefile.build:361：drivers/camera/core/isp2.6/src/cam_buf.o] 错误 1
+make[3]: *** 正在等待未完成的任务....
+  AR      sound/spi/built-in.o
+  CC      sound/soc/soc-io.o
+In file included from drivers/camera/core/isp2.6/src/cam_core.c:27:
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_pool_show’中:
+./include/linux/sprd_iommu.h:139:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  139 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:137:6: note: 在此声明
+  137 | void sprd_iommu_pool_show(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~~
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_reg_dump’中:
+./include/linux/sprd_iommu.h:144:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  144 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:142:6: note: 在此声明
+  142 | void sprd_iommu_reg_dump(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_reg_show’中:
+./include/linux/sprd_iommu.h:149:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  149 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:147:6: note: 在此声明
+  147 | void sprd_iommu_reg_show(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~
+In file included from drivers/camera/core/isp2.6/src/cam_core.c:5719:
+drivers/camera/core/isp2.6/src/cam_ioctl.c: 在函数‘camioctl_cam_security_set’中:
+drivers/camera/core/isp2.6/src/cam_ioctl.c:398:23: error: 隐式声明函数‘sprd_iommu_set_cam_bypass’ [-Werror=implicit-function-declaration]
+  398 |                 ret = sprd_iommu_set_cam_bypass(true);
+      |                       ^~~~~~~~~~~~~~~~~~~~~~~~~
+  AR      drivers/camera/cpp/built-in.o
+  CC [M]  drivers/camera/cpp/lite_r6p0/cpp_core.o
+  CC      sound/soc/soc-devres.o
+In file included from drivers/camera/cpp/lite_r6p0/cpp_core.h:23,
+                 from drivers/camera/cpp/lite_r6p0/dma_drv.h:17,
+                 from drivers/camera/cpp/lite_r6p0/cpp_core.c:39:
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_pool_show’中:
+./include/linux/sprd_iommu.h:139:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  139 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:137:6: note: 在此声明
+  137 | void sprd_iommu_pool_show(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~~
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_reg_dump’中:
+./include/linux/sprd_iommu.h:144:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  144 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:142:6: note: 在此声明
+  142 | void sprd_iommu_reg_dump(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_reg_show’中:
+./include/linux/sprd_iommu.h:149:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  149 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:147:6: note: 在此声明
+  147 | void sprd_iommu_reg_show(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~
+  CC      fs/locks.o
+  CC      sound/soc/soc-ops.o
+  CC [M]  drivers/camera/cpp/lite_r6p0/cpp_ioctl.o
+  CC [M]  drivers/camera/cpp/lite_r6p0/dma_drv.o
+In file included from drivers/camera/cpp/lite_r6p0/cpp_core.h:23,
+                 from drivers/camera/cpp/lite_r6p0/dma_drv.h:17,
+                 from drivers/camera/cpp/lite_r6p0/dma_drv.c:24:
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_pool_show’中:
+./include/linux/sprd_iommu.h:139:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  139 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:137:6: note: 在此声明
+  137 | void sprd_iommu_pool_show(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~~
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_reg_dump’中:
+./include/linux/sprd_iommu.h:144:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  144 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:142:6: note: 在此声明
+  142 | void sprd_iommu_reg_dump(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_reg_show’中:
+./include/linux/sprd_iommu.h:149:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  149 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:147:6: note: 在此声明
+  147 | void sprd_iommu_reg_show(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~
+  CC [M]  drivers/camera/cpp/lite_r6p0/rot_drv.o
+In file included from drivers/camera/cpp/lite_r6p0/cpp_core.h:23,
+                 from drivers/camera/cpp/lite_r6p0/rot_drv.h:17,
+                 from drivers/camera/cpp/lite_r6p0/rot_drv.c:24:
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_pool_show’中:
+./include/linux/sprd_iommu.h:139:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  139 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:137:6: note: 在此声明
+  137 | void sprd_iommu_pool_show(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~~
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_reg_dump’中:
+./include/linux/sprd_iommu.h:144:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  144 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:142:6: note: 在此声明
+  142 | void sprd_iommu_reg_dump(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_reg_show’中:
+./include/linux/sprd_iommu.h:149:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  149 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:147:6: note: 在此声明
+  147 | void sprd_iommu_reg_show(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~
+  AR      sound/soc/adi/built-in.o
+  AR      sound/soc/amd/built-in.o
+  AR      sound/soc/atmel/built-in.o
+  AR      sound/soc/au1x/built-in.o
+  AR      sound/soc/bcm/built-in.o
+  AR      sound/soc/blackfin/built-in.o
+  CC [M]  drivers/camera/cpp/lite_r6p0/scale_drv.o
+  AR      sound/soc/cirrus/built-in.o
+  CC      sound/soc/codecs/dbmdx/dbmdx.o
+In file included from drivers/camera/cpp/lite_r6p0/cpp_core.h:23,
+                 from drivers/camera/cpp/lite_r6p0/scale_drv.c:23:
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_pool_show’中:
+./include/linux/sprd_iommu.h:139:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  139 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:137:6: note: 在此声明
+  137 | void sprd_iommu_pool_show(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~~
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_reg_dump’中:
+./include/linux/sprd_iommu.h:144:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  144 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:142:6: note: 在此声明
+  142 | void sprd_iommu_reg_dump(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~
+./include/linux/sprd_iommu.h: 在函数‘sprd_iommu_reg_show’中:
+./include/linux/sprd_iommu.h:149:16: warning: 在无返回值的函数中，‘return’带返回值 [-Wreturn-mismatch]
+  149 |         return -ENODEV;
+      |                ^
+./include/linux/sprd_iommu.h:147:6: note: 在此声明
+  147 | void sprd_iommu_reg_show(struct device *dev)
+      |      ^~~~~~~~~~~~~~~~~~~
+  LD [M]  drivers/camera/cpp/sprd_cpp.o
+/usr/bin/ld: drivers/camera/cpp/lite_r6p0/dma_drv.o: in function `sprd_iommu_notifier_call_chain':
+/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:135: multiple definition of `sprd_iommu_notifier_call_chain'; drivers/camera/cpp/lite_r6p0/cpp_core.o:/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:135: first defined here
+/usr/bin/ld: drivers/camera/cpp/lite_r6p0/dma_drv.o: in function `sprd_iommu_pool_show':
+/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:140: multiple definition of `sprd_iommu_pool_show'; drivers/camera/cpp/lite_r6p0/cpp_core.o:/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:140: first defined here
+/usr/bin/ld: drivers/camera/cpp/lite_r6p0/dma_drv.o: in function `sprd_iommu_reg_dump':
+/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:142: multiple definition of `sprd_iommu_reg_dump'; drivers/camera/cpp/lite_r6p0/cpp_core.o:/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:142: first defined here
+/usr/bin/ld: drivers/camera/cpp/lite_r6p0/dma_drv.o: in function `sprd_iommu_reg_show':
+/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:147: multiple definition of `sprd_iommu_reg_show'; drivers/camera/cpp/lite_r6p0/cpp_core.o:/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:147: first defined here
+/usr/bin/ld: drivers/camera/cpp/lite_r6p0/rot_drv.o: in function `sprd_iommu_notifier_call_chain':
+/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:135: multiple definition of `sprd_iommu_notifier_call_chain'; drivers/camera/cpp/lite_r6p0/cpp_core.o:/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:135: first defined here
+/usr/bin/ld: drivers/camera/cpp/lite_r6p0/rot_drv.o: in function `sprd_iommu_pool_show':
+/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:140: multiple definition of `sprd_iommu_pool_show'; drivers/camera/cpp/lite_r6p0/cpp_core.o:/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:140: first defined here
+/usr/bin/ld: drivers/camera/cpp/lite_r6p0/rot_drv.o: in function `sprd_iommu_reg_dump':
+/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:142: multiple definition of `sprd_iommu_reg_dump'; drivers/camera/cpp/lite_r6p0/cpp_core.o:/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:142: first defined here
+/usr/bin/ld: drivers/camera/cpp/lite_r6p0/rot_drv.o: in function `sprd_iommu_reg_show':
+/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:147: multiple definition of `sprd_iommu_reg_show'; drivers/camera/cpp/lite_r6p0/cpp_core.o:/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:147: first defined here
+/usr/bin/ld: drivers/camera/cpp/lite_r6p0/scale_drv.o: in function `sprd_iommu_notifier_call_chain':
+/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:135: multiple definition of `sprd_iommu_notifier_call_chain'; drivers/camera/cpp/lite_r6p0/cpp_core.o:/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:135: first defined here
+/usr/bin/ld: drivers/camera/cpp/lite_r6p0/scale_drv.o: in function `sprd_iommu_pool_show':
+/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:140: multiple definition of `sprd_iommu_pool_show'; drivers/camera/cpp/lite_r6p0/cpp_core.o:/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:140: first defined here
+/usr/bin/ld: drivers/camera/cpp/lite_r6p0/scale_drv.o: in function `sprd_iommu_reg_dump':
+/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:142: multiple definition of `sprd_iommu_reg_dump'; drivers/camera/cpp/lite_r6p0/cpp_core.o:/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:142: first defined here
+/usr/bin/ld: drivers/camera/cpp/lite_r6p0/scale_drv.o: in function `sprd_iommu_reg_show':
+/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:147: multiple definition of `sprd_iommu_reg_show'; drivers/camera/cpp/lite_r6p0/cpp_core.o:/run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/./include/linux/sprd_iommu.h:147: first defined here
+make[3]: *** [scripts/Makefile.build:661：drivers/camera/cpp/sprd_cpp.o] 错误 1
+make[2]: *** [scripts/Makefile.build:676：drivers/camera/cpp] 错误 2
+make[2]: *** 正在等待未完成的任务....
+  CC      sound/soc/codecs/aw87xxx/aw87xxx.o
+  CC      fs/binfmt_script.o
+cc1: some warnings being treated as errors
+make[3]: *** [scripts/Makefile.build:361：drivers/camera/core/isp2.6/src/cam_core.o] 错误 1
+make[2]: *** [scripts/Makefile.build:676：drivers/camera/core] 错误 2
+make[1]: *** [scripts/Makefile.build:676：drivers/camera] 错误 2
+make: *** [Makefile:1175：drivers] 错误 2
+make: *** 正在等待未完成的任务....
+  CC      sound/soc/codecs/dbmdx/dbmdx-spi.o
+  CC      fs/binfmt_elf.o
+  CC      sound/soc/codecs/dbmdx/dbmdx-spi-d4.o
+  AR      sound/synth/built-in.o
+  CC      sound/usb/card.o
+  CC      sound/soc/codecs/dbmdx/dbmdx-i2s.o
+  CC      fs/mbcache.o
+  CC      sound/usb/clock.o
+  AR      sound/soc/davinci/built-in.o
+  CC      sound/soc/codecs/aw87xxx/aw_device.o
+  CC      fs/posix_acl.o
+  CC      sound/usb/endpoint.o
+  AR      sound/x86/built-in.o
+  CC      sound/soc/codecs/dbmdx/dbmdx-customer.o
+  CC      fs/coredump.o
+  CC      sound/usb/format.o
+  CC      sound/usb/helper.o
+  CC      sound/soc/codecs/dbmdx/dbmdx-cdev.o
+  AR      sound/soc/dwc/built-in.o
+  AR      sound/soc/fsl/built-in.o
+  CC      sound/soc/codecs/dbmdx/dbmdx-snd.o
+  CC      sound/usb/mixer.o
+  CC      sound/soc/codecs/dbmdx/dbmdx-snd-pcm.o
+  CC      sound/last.o
+  CC      fs/drop_caches.o
+  CC      sound/soc/codecs/aw87xxx/aw_monitor.o
+  AR      sound/soc/codecs/dbmdx/built-in.o
+  AR      sound/soc/generic/built-in.o
+  AR      sound/soc/hisilicon/built-in.o
+  CC      sound/usb/mixer_quirks.o
+  CC      fs/dcookies.o
+  AR      sound/soundcore.o
+  CC      sound/soc/codecs/aw87xxx/aw_bin_parse.o
+  AR      sound/soc/img/built-in.o
+  AR      sound/soc/intel/boards/built-in.o
+  AR      sound/soc/intel/built-in.o
+  CC      sound/usb/mixer_scarlett.o
+  CC      sound/soc/codecs/aw87xxx/aw_dsp.o
+  AR      sound/soc/jz4740/built-in.o
+  AR      fs/built-in.o
+  AR      sound/soc/kirkwood/built-in.o
+  CC      sound/usb/mixer_us16x08.o
+  AR      sound/soc/mediatek/built-in.o
+  CC      sound/usb/pcm.o
+  CC      sound/soc/codecs/aw87xxx/aw_acf_bin.o
+In file included from sound/soc/codecs/aw87xxx/aw_acf_bin.c:15:
+./arch/x86/include/asm/uaccess.h: 在函数‘set_fs’中:
+./arch/x86/include/asm/uaccess.h:32:16: error: invalid use of undefined type ‘struct task_struct’
+   32 |         current->thread.addr_limit = fs;
+      |                ^~
+In file included from ./include/linux/kernel.h:10,
+                 from ./include/linux/list.h:9,
+                 from ./include/linux/module.h:9,
+                 from sound/soc/codecs/aw87xxx/aw_acf_bin.c:14:
+./arch/x86/include/asm/uaccess.h: 在函数‘user_access_begin’中:
+./arch/x86/include/asm/uaccess.h:39:33: error: invalid use of undefined type ‘struct task_struct’
+   39 | #define user_addr_max() (current->thread.addr_limit.seg)
+      |                                 ^~
+./include/linux/compiler.h:77:45: note: in definition of macro ‘unlikely’
+   77 | # define unlikely(x)    __builtin_expect(!!(x), 0)
+      |                                             ^
+./arch/x86/include/asm/uaccess.h:101:9: note: in expansion of macro ‘likely’
+  101 |         likely(!__range_not_ok(addr, size, user_addr_max()));           \
+      |         ^~~~~~
+./arch/x86/include/asm/uaccess.h:101:17: note: in expansion of macro ‘__range_not_ok’
+  101 |         likely(!__range_not_ok(addr, size, user_addr_max()));           \
+      |                 ^~~~~~~~~~~~~~
+./arch/x86/include/asm/uaccess.h:101:44: note: in expansion of macro ‘user_addr_max’
+  101 |         likely(!__range_not_ok(addr, size, user_addr_max()));           \
+      |                                            ^~~~~~~~~~~~~
+./arch/x86/include/asm/uaccess.h:718:23: note: in expansion of macro ‘access_ok’
+  718 |         if (unlikely(!access_ok(type, ptr, len)))
+      |                       ^~~~~~~~~
+  CC      sound/usb/proc.o
+make[3]: *** [scripts/Makefile.build:361：sound/soc/codecs/aw87xxx/aw_acf_bin.o] 错误 1
+make[2]: *** [scripts/Makefile.build:676：sound/soc/codecs] 错误 2
+make[1]: *** [scripts/Makefile.build:676：sound/soc] 错误 2
+make[1]: *** 正在等待未完成的任务....
+  CC      sound/usb/quirks.o
+  CC      sound/usb/stream.o
+  CC      sound/usb/midi.o
+  AR      sound/usb/6fire/built-in.o
+  AR      sound/usb/bcd2000/built-in.o
+  AR      sound/usb/caiaq/built-in.o
+  AR      sound/usb/hiface/built-in.o
+  AR      sound/usb/misc/built-in.o
+  AR      sound/usb/usx2y/built-in.o
+  AR      sound/usb/snd-usb-audio.o
+  AR      sound/usb/snd-usbmidi-lib.o
+  AR      sound/usb/built-in.o
+make: *** [Makefile:1175：sound] 错误 2

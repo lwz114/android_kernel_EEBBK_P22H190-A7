@@ -1,0 +1,143 @@
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+WARNING: Disabling clang-specific options with gcc
+scripts/kconfig/conf  --olddefconfig Kconfig
+drivers/input/touchscreen/focaltech_touch/Kconfig:5:warning: ignoring type redefinition of 'TOUCHSCREEN_FTS' from 'tristate' to 'boolean'
+drivers/input/touchscreen/ili9882n/Kconfig:4:warning: ignoring type redefinition of 'TOUCHSCREEN_ILI9882N' from 'tristate' to 'boolean'
+#
+# configuration written to .config
+#
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+scripts/kconfig/conf  --silentoldconfig Kconfig
+drivers/input/touchscreen/focaltech_touch/Kconfig:5:warning: ignoring type redefinition of 'TOUCHSCREEN_FTS' from 'tristate' to 'boolean'
+drivers/input/touchscreen/ili9882n/Kconfig:4:warning: ignoring type redefinition of 'TOUCHSCREEN_ILI9882N' from 'tristate' to 'boolean'
+arch/arm64/Makefile:27: ld does not support --fix-cortex-a53-843419; kernel may be susceptible to erratum
+arch/arm64/Makefile:49: LSE atomics not supported by binutils
+arch/arm64/Makefile:57: Detected assembler with broken .inst; disassembly will be unreliable
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+  CHK     include/config/kernel.release
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+make: aarch64-linux-gnu-gcc: 没有那个文件或目录
+  UPD     include/config/kernel.release
+Cannot use CONFIG_CC_STACKPROTECTOR_STRONG: -fstack-protector-strong not supported by compiler
+make: *** [Makefile:1291：prepare-compiler-check] 错误 1

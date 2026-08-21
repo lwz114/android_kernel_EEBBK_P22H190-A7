@@ -1,0 +1,197 @@
+WARNING: Disabling clang-specific options with gcc
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/basic/bin2c
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTCC  scripts/kconfig/zconf.tab.o
+In file included from scripts/kconfig/zconf.tab.c:2470:
+在函数‘dep_stack_insert’中,
+    内联自‘sym_check_print_recursive’于 scripts/kconfig/symbol.c:1123:3,
+    内联自‘sym_check_deps’于 scripts/kconfig/symbol.c:1300:3:
+scripts/kconfig/symbol.c:1099:19: warning: storing the address of local variable ‘cv_stack’ in ‘check_top’ [-Wdangling-pointer=]
+ 1099 |         check_top = stack;
+      |         ~~~~~~~~~~^~~~~~~
+scripts/kconfig/symbol.c: 在函数‘sym_check_deps’中:
+scripts/kconfig/symbol.c:1120:26: note: ‘cv_stack’在此声明
+ 1120 |         struct dep_stack cv_stack;
+      |                          ^~~~~~~~
+scripts/kconfig/symbol.c:1090:4: note: ‘check_top’在此声明
+ 1090 | } *check_top;
+      |    ^~~~~~~~~
+  HOSTLD  scripts/kconfig/conf
+scripts/kconfig/conf  --olddefconfig Kconfig
+drivers/input/touchscreen/focaltech_touch/Kconfig:5:warning: ignoring type redefinition of 'TOUCHSCREEN_FTS' from 'tristate' to 'boolean'
+drivers/input/touchscreen/ili9882n/Kconfig:4:warning: ignoring type redefinition of 'TOUCHSCREEN_ILI9882N' from 'tristate' to 'boolean'
+.config:4815:warning: override: reassigning to symbol DEBUG_DRIVER
+.config:4816:warning: override: reassigning to symbol DEBUG_PINCTRL
+#
+# configuration written to .config
+#
+scripts/kconfig/conf  --silentoldconfig Kconfig
+drivers/input/touchscreen/focaltech_touch/Kconfig:5:warning: ignoring type redefinition of 'TOUCHSCREEN_FTS' from 'tristate' to 'boolean'
+drivers/input/touchscreen/ili9882n/Kconfig:4:warning: ignoring type redefinition of 'TOUCHSCREEN_ILI9882N' from 'tristate' to 'boolean'
+  SYSTBL  arch/x86/include/generated/asm/syscalls_32.h
+  SYSHDR  arch/x86/include/generated/asm/unistd_32_ia32.h
+  SYSHDR  arch/x86/include/generated/asm/unistd_64_x32.h
+  SYSTBL  arch/x86/include/generated/asm/syscalls_64.h
+  SYSHDR  arch/x86/include/generated/uapi/asm/unistd_32.h
+  SYSHDR  arch/x86/include/generated/uapi/asm/unistd_64.h
+  SYSHDR  arch/x86/include/generated/uapi/asm/unistd_x32.h
+  CHK     include/config/kernel.release
+  CHK     include/generated/uapi/linux/version.h
+  UPD     include/generated/uapi/linux/version.h
+  CHK     include/generated/utsrelease.h
+  UPD     include/generated/utsrelease.h
+  DESCEND  objtool
+gcc  -o /run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/tools/objtool/fixdep /run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/tools/objtool/fixdep-in.o
+rm -f /run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/tools/objtool/libsubcmd.a && ar rcs /run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/tools/objtool/libsubcmd.a /run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/tools/objtool/libsubcmd-in.o
+gcc /run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/tools/objtool/objtool-in.o -lelf /run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/tools/objtool/libsubcmd.a -o /run/media/lwztime/GAME/A7/android_kernel_EEBBK_P21H180/tools/objtool/objtool
+  HOSTCC  arch/x86/tools/relocs_32.o
+  WRAP    arch/x86/include/generated/asm/clkdev.h
+  WRAP    arch/x86/include/generated/asm/dma-contiguous.h
+  WRAP    arch/x86/include/generated/asm/early_ioremap.h
+  WRAP    arch/x86/include/generated/asm/mcs_spinlock.h
+  WRAP    arch/x86/include/generated/asm/mm-arch-hooks.h
+  HOSTCC  arch/x86/tools/relocs_64.o
+  HOSTCC  scripts/genksyms/genksyms.o
+  HOSTCC  arch/x86/tools/relocs_common.o
+  CC      scripts/mod/empty.o
+  HOSTCC  scripts/mod/mk_elfconfig
+  HOSTLD  arch/x86/tools/relocs
+  SHIPPED scripts/genksyms/parse.tab.c
+  CC      scripts/mod/devicetable-offsets.s
+  HOSTCC  scripts/selinux/genheaders/genheaders
+  MKELF   scripts/mod/elfconfig.h
+  CHK     scripts/mod/devicetable-offsets.h
+  UPD     scripts/mod/devicetable-offsets.h
+  HOSTCC  scripts/mod/sumversion.o
+  SHIPPED scripts/genksyms/lex.lex.c
+  HOSTCC  scripts/selinux/mdp/mdp
+  SHIPPED scripts/genksyms/parse.tab.h
+  HOSTCC  scripts/genksyms/parse.tab.o
+  HOSTCC  scripts/mod/modpost.o
+scripts/mod/modpost.c: 在函数‘match’中:
+scripts/mod/modpost.c:811:30: warning: assignment discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  811 |                         here = strstr(sym, bare);
+      |                              ^
+  CC      kernel/bounds.s
+  CHK     include/generated/timeconst.h
+  UPD     include/generated/timeconst.h
+  CHK     include/generated/bounds.h
+  UPD     include/generated/bounds.h
+  CC      arch/x86/kernel/asm-offsets.s
+  HOSTCC  scripts/genksyms/lex.lex.o
+  CHK     include/generated/asm-offsets.h
+  UPD     include/generated/asm-offsets.h
+  CALL    scripts/checksyscalls.sh
+  HOSTCC  scripts/kallsyms
+  HOSTCC  scripts/mod/file2alias.o
+  HOSTLD  scripts/genksyms/genksyms
+  HOSTCC  scripts/sortextable
+  HOSTCC  scripts/asn1_compiler
+  HOSTCC  scripts/extract-cert
+scripts/extract-cert.c: 在函数‘display_openssl_errors’中:
+scripts/extract-cert.c:46:9: warning: ‘ERR_get_error_line’ 已被弃用: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+   46 |         while ((e = ERR_get_error_line(&file, &line))) {
+      |         ^~~~~
+In file included from scripts/extract-cert.c:23:
+/usr/include/openssl/err.h:426:15: note: 在此声明
+  426 | unsigned long ERR_get_error_line(const char **file, int *line);
+      |               ^~~~~~~~~~~~~~~~~~
+scripts/extract-cert.c: 在函数‘drain_openssl_errors’中:
+scripts/extract-cert.c:59:9: warning: ‘ERR_get_error_line’ 已被弃用: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+   59 |         while (ERR_get_error_line(&file, &line)) {}
+      |         ^~~~~
+/usr/include/openssl/err.h:426:15: note: 在此声明
+  426 | unsigned long ERR_get_error_line(const char **file, int *line);
+      |               ^~~~~~~~~~~~~~~~~~
+scripts/extract-cert.c: 在函数‘main’中:
+scripts/extract-cert.c:124:17: warning: ‘ENGINE_load_builtin_engines’ 已被弃用: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  124 |                 ENGINE_load_builtin_engines();
+      |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from scripts/extract-cert.c:24:
+/usr/include/openssl/engine.h:358:28: note: 在此声明
+  358 | OSSL_DEPRECATEDIN_3_0 void ENGINE_load_builtin_engines(void);
+      |                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+scripts/extract-cert.c:126:17: warning: ‘ENGINE_by_id’ 已被弃用: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  126 |                 e = ENGINE_by_id("pkcs11");
+      |                 ^
+/usr/include/openssl/engine.h:336:31: note: 在此声明
+  336 | OSSL_DEPRECATEDIN_3_0 ENGINE *ENGINE_by_id(const char *id);
+      |                               ^~~~~~~~~~~~
+scripts/extract-cert.c:128:17: warning: ‘ENGINE_init’ 已被弃用: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  128 |                 if (ENGINE_init(e))
+      |                 ^~
+/usr/include/openssl/engine.h:622:27: note: 在此声明
+  622 | OSSL_DEPRECATEDIN_3_0 int ENGINE_init(ENGINE *e);
+      |                           ^~~~~~~~~~~
+scripts/extract-cert.c:133:25: warning: ‘ENGINE_ctrl_cmd_string’ 已被弃用: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  133 |                         ERR(!ENGINE_ctrl_cmd_string(e, "PIN", key_pass, 0), "Set PKCS#11 PIN");
+      |                         ^~~
+/usr/include/openssl/engine.h:479:5: note: 在此声明
+  479 | int ENGINE_ctrl_cmd_string(ENGINE *e, const char *cmd_name, const char *arg,
+      |     ^~~~~~~~~~~~~~~~~~~~~~
+scripts/extract-cert.c:134:17: warning: ‘ENGINE_ctrl_cmd’ 已被弃用: Since OpenSSL 3.0 [-Wdeprecated-declarations]
+  134 |                 ENGINE_ctrl_cmd(e, "LOAD_CERT_CTRL", 0, &parms, NULL, 1);
+      |                 ^~~~~~~~~~~~~~~
+/usr/include/openssl/engine.h:450:27: note: 在此声明
+  450 | OSSL_DEPRECATEDIN_3_0 int ENGINE_ctrl_cmd(ENGINE *e, const char *cmd_name,
+      |                           ^~~~~~~~~~~~~~~
+  HOSTLD  scripts/mod/modpost
+  HOSTCC  usr/gen_init_cpio
+  CHK     include/generated/compile.h
+  CC      init/main.o
+  UPD     include/generated/compile.h
+  AR      arch/x86/crypto/built-in.o
+  AS      arch/x86/entry/entry_64.o
+/tmp/ccm6pn8X.s: Assembler messages:
+arch/x86/entry/entry_64.S:1642: 警告：no instruction mnemonic suffix given and no register operands; using default for `sysret'
+  CC      kernel/fork.o
+  GEN     usr/initramfs_data.cpio
+  AS      usr/initramfs_data.o
+  AR      usr/built-in.o
+  CC      init/do_mounts.o
+  AS      arch/x86/entry/thunk_64.o
+  CC      arch/x86/entry/syscall_64.o
+  CC      arch/x86/entry/common.o
+  CC      init/do_mounts_rd.o
+  CC      arch/x86/events/core.o
+  CC      init/do_mounts_initrd.o
+  CC      arch/x86/entry/vdso/vma.o
+  CC      kernel/exec_domain.o
+  LDS     arch/x86/entry/vdso/vdso.lds
+  AS      arch/x86/entry/vdso/vdso-note.o
+  CC      arch/x86/entry/vdso/vclock_gettime.o
+  CC      init/do_mounts_dm.o
+  CC      arch/x86/entry/vdso/vgetcpu.o
+  CC      kernel/panic.o
+  HOSTCC  arch/x86/entry/vdso/vdso2c
+  CC      init/noinitramfs.o
+  CC      init/initramfs.o
+  VDSO    arch/x86/entry/vdso/vdso64.so.dbg
+  OBJCOPY arch/x86/entry/vdso/vdso64.so
+  VDSO2C  arch/x86/entry/vdso/vdso-image-64.c
+  CC      arch/x86/entry/vdso/vdso-image-64.o
+  CC      arch/x86/events/amd/core.o
+  CC      kernel/cpu.o
+  AR      arch/x86/entry/vdso/built-in.o
+  CC      arch/x86/entry/vsyscall/vsyscall_gtod.o
+  CC      arch/x86/entry/vsyscall/vsyscall_64.o
+  CC      init/calibrate.o
+  CC      arch/x86/events/amd/uncore.o
+  AS      arch/x86/entry/vsyscall/vsyscall_emu_64.o
+  CC      init/init_task.o
+  AR      arch/x86/entry/vsyscall/built-in.o
+  AR      arch/x86/entry/built-in.o
+  CC      certs/system_keyring.o
+  CC      arch/x86/events/amd/ibs.o
+  EXTRACT_CERTS   
+  AS      certs/system_certificates.o
+  CC      init/version.o
+  AR      certs/built-in.o
+  CC      kernel/exit.o
+  CC      arch/x86/events/intel/core.o
+  AR      arch/x86/events/amd/built-in.o
+  AR      init/mounts.o
+  AR      init/built-in.o
+  CC      arch/x86/kernel/process_64.o
+  CC      mm/filemap.o
