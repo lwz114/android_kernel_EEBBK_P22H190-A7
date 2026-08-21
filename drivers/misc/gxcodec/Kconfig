@@ -1,0 +1,6 @@
+config GXCODEC
+	bool "NationalChip GX8002 voice codec"
+	depends on I2C && SPI_MASTER && GPIOLIB
+	help
+	  Enable the NationalChip GX8002 companion voice codec used by
+	  the BBK A3 audio capture path.

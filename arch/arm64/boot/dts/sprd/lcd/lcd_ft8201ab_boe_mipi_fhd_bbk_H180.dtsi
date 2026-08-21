@@ -1,0 +1,75 @@
+/*
+ * LCD panel config: BOE FT8201AB MIPI FHD 1280x1752 — EEBBK 1H180 (EEBBK A3)
+ * Values extracted verbatim from the factory DTBO overlay (dtbo_idx=2,
+ * sc-id "ums512 1h180 1000") decompiled from the device.
+ */
+/ {
+	fragment {
+		target-path = "/";
+		__overlay__ {
+			lcds {
+				lcd_ft8201ab_boe_mipi_fhd_bbk_H180: lcd_ft8201ab_boe_mipi_fhd_bbk_H180 {
+
+					sprd,dsi-work-mode = <1>;   /* video burst mode */
+					sprd,dsi-lane-number = <4>;
+					sprd,dsi-color-format = "rgb888";
+
+					sprd,phy-bit-clock = <1382000>; /* kbps (0x151670) */
+					sprd,phy-escape-clock = <20000>;/* kHz (0x4e20) */
+
+					sprd,width-mm = <145>;   /* 0x91 */
+					sprd,height-mm = <198>;  /* 0xc6 */
+
+					sprd,esd-check-mode = <0>;
+					sprd,esd-check-enable = <1>;
+					sprd,esd-check-period = <1000>; /* 0x3e8 */
+					sprd,esd-check-register = <0x0A>;
+					sprd,esd-check-value = <0x9C>;
+
+					sprd,reset-on-sequence = <1 20>, <0 20>, <1 70>;
+					sprd,reset-off-sequence = <0 5>;
+
+					sprd,use-dcs-write;
+
+					sprd,initial-command = [
+						05 55 00 01 11
+						05 08 00 01 29
+						29 00 00 02 00 00
+						29 00 00 04 FF 82 01 01
+						29 00 00 02 00 80
+						29 00 00 03 FF 82 01
+						29 00 00 02 00 88
+						29 00 00 02 B0 07
+						29 00 00 02 00 00
+						29 00 00 02 FA 02
+					];
+					sprd,sleep-in-command = [
+						29 00 00 02 00 00
+						29 00 00 02 FA 5A
+						29 00 00 02 00 88
+						29 00 00 02 B0 01
+						13 0D 00 01 28
+						13 78 00 01 10
+					];
+					sprd,sleep-out-command = [13 78 00 01 11 13 32 00 01 29];
+
+					display-timings {
+						native-mode = <&ft8201ab_bbk_H180_timing0>;
+
+						ft8201ab_bbk_H180_timing0: timing0 {
+							clock-frequency = <192000000>; /* 0xb71b000 */
+							hactive = <1280>;   /* 0x500 */
+							vactive = <1752>;   /* 0x6d8 */
+							hback-porch = <122>;  /* 0x7a */
+							hfront-porch = <150>; /* 0x96 */
+							vback-porch = <20>;   /* 0x14 */
+							vfront-porch = <231>; /* 0xe7 */
+							hsync-len = <33>;  /* 0x21 */
+							vsync-len = <16>;  /* 0x10 */
+						};
+					};
+				};
+			};
+		};
+	};
+};
