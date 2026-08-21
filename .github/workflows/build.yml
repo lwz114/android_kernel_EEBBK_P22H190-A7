@@ -1,0 +1,169 @@
+name: Build P21H180 recovery upgrade
+
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: Build profile
+        type: choice
+        required: true
+        default: standard
+        options:
+          - standard
+          - droidspaces
+
+permissions:
+  contents: write
+
+concurrency:
+  group: p21h180-${{ inputs.profile || 'standard' }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    env:
+      ARCH: arm64
+      SUBARCH: arm64
+      CLANG_TRIPLE: aarch64-linux-gnu-
+      CROSS_COMPILE: aarch64-linux-gnu-
+      ANYKERNEL_DIR: ${{ github.workspace }}/out/AnyKernel3
+      KPM_PATCHER: ${{ github.workspace }}/out/tools/patch_linux
+
+    steps:
+      - name: Checkout source and submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Fetch Google Android clang r383902
+        shell: bash
+        run: |
+          set -euo pipefail
+          CLANG_ROOT="$RUNNER_TEMP/clang-r383902"
+          CLANG_DIR="$CLANG_ROOT/clang-r383902/bin"
+          CLANG_REPO="$RUNNER_TEMP/clang-repo"
+          mkdir -p "$CLANG_ROOT" out
+          git clone --depth=1 --filter=blob:none --sparse \
+            --branch android12-release \
+            https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86 \
+            "$CLANG_REPO"
+          git -C "$CLANG_REPO" sparse-checkout set clang-r383902
+          cp -a "$CLANG_REPO/clang-r383902" "$CLANG_ROOT/"
+          test -x "$CLANG_DIR/clang"
+          "$CLANG_DIR/clang" --version | tee out/clang-version.txt
+          grep -F 'b397f81060ce6d701042b782172ed13bee898b79' out/clang-version.txt
+          printf 'CLANG_DIR=%s\n' "$CLANG_DIR" >> "$GITHUB_ENV"
+
+      - name: Select build profile
+        shell: bash
+        env:
+          BUILD_PROFILE: ${{ inputs.profile || 'standard' }}
+        run: |
+          set -euo pipefail
+          case "$BUILD_PROFILE" in
+            standard)
+              profile=p21h180
+              defconfig=ums512-p21h180_defconfig
+              build_dir="$GITHUB_WORKSPACE/out/ums512-p21h180"
+              release_dir="$GITHUB_WORKSPACE/out/release"
+              ;;
+            droidspaces)
+              profile=droidspaces
+              defconfig=ums512-p21h180_droidspaces_defconfig
+              build_dir="$GITHUB_WORKSPACE/out/ums512-p21h180-droidspaces"
+              release_dir="$GITHUB_WORKSPACE/out/release-droidspaces"
+              ;;
+            *)
+              echo "unsupported profile: $BUILD_PROFILE" >&2
+              exit 2
+              ;;
+          esac
+          {
+            printf 'P21h180_PROFILE=%s\n' "$profile"
+            printf 'P21h180_DEFCONFIG=%s\n' "$defconfig"
+            printf 'BUILD_DIR=%s\n' "$build_dir"
+            printf 'RELEASE_DIR=%s\n' "$release_dir"
+            printf 'SOCKO_TEMPLATE=%s\n' "$GITHUB_WORKSPACE/prebuilts/p21h180/socko.factory.img"
+          } >> "$GITHUB_ENV"
+          printf 'profile=%s\ndefconfig=%s\nbuild_dir=%s\nrelease_dir=%s\n' \
+            "$profile" "$defconfig" "$build_dir" "$release_dir"
+
+      - name: Install build and packaging dependencies
+        run: |
+          set -euo pipefail
+          # GitHub's mirror list occasionally prioritizes an unreachable Azure
+          # mirror. Keep the upstream archive candidate and bound retries.
+          if [ -f /etc/apt/apt-mirrors.txt ]; then
+            sudo sed -i '\|azure\.archive\.ubuntu\.com/ubuntu|d' /etc/apt/apt-mirrors.txt
+          fi
+          sudo apt-get -o Acquire::Retries=2 -o Acquire::http::Timeout=30 update
+          sudo apt-get -o Acquire::Retries=2 -o Acquire::http::Timeout=30 install -y \
+            bc bison cpio device-tree-compiler e2fsprogs fuse2fs flex fuse3 \
+            gcc-aarch64-linux-gnu git kmod libelf-dev libncurses-dev \
+            libssl-dev libyaml-dev lld perl python3 rsync unzip zip
+
+      - name: Fetch KPM patcher and AnyKernel3
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p out/tools
+          curl -fL --retry 3 --connect-timeout 15 --max-time 180 \
+            https://raw.githubusercontent.com/SukiSU-Ultra/SukiSU_patch/main/kpm/patch_linux \
+            -o "$KPM_PATCHER"
+          echo '1bd00563e9d8fbbd11a16c0c1c59c5add406e6c5c92557def50f93d6f0aebe2d  out/tools/patch_linux' \
+            | sha256sum --check
+          chmod 755 "$KPM_PATCHER"
+          file "$KPM_PATCHER"
+          git clone --depth=1 https://github.com/osm0sis/AnyKernel3.git "$ANYKERNEL_DIR"
+          test -f "$ANYKERNEL_DIR/anykernel.sh"
+
+      - name: Build recovery upgrade package
+        shell: bash
+        run: |
+          set -o pipefail
+          mkdir -p out
+          ANDROID_CLANG_DIR="$CLANG_DIR" \
+          P21h180_PROFILE="$P21h180_PROFILE" \
+          P21h180_DEFCONFIG="$P21h180_DEFCONFIG" \
+          P21h180_BUILD_DIR="$BUILD_DIR" \
+          P21h180_OUTPUT_DIR="$RELEASE_DIR" \
+          SOCKO_TEMPLATE="$SOCKO_TEMPLATE" \
+          ANYKERNEL_DIR="$ANYKERNEL_DIR" \
+          KPM_PATCHER="$KPM_PATCHER" \
+          JOBS="$(nproc)" \
+            ./scripts/build-p21h180.sh all 2>&1 | tee out/build.log
+          test "${PIPESTATUS[0]}" -eq 0
+
+      - name: Verify recovery upgrade package
+        shell: bash
+        run: |
+          set -euo pipefail
+          ls -lh "$RELEASE_DIR"
+          package=$(find "$RELEASE_DIR" -maxdepth 1 -type f \
+            -name 'P21h180-recovery-*.zip' -size +1c -print -quit)
+          test -n "$package"
+          test "$(find "$RELEASE_DIR" -maxdepth 1 -type f -name '*.zip' | wc -l)" -eq 1
+          sha256sum "$package"
+
+      - name: Upload build package artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p21h180-${{ inputs.profile || 'standard' }}-packages-${{ github.sha }}
+          path: |
+            out/release*/P21h180-recovery-*.zip
+          if-no-files-found: warn
+          compression-level: 0
+
+      - name: Create GitHub Release
+        if: github.event_name != 'pull_request' && success()
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: p21h180-${{ inputs.profile || 'standard' }}-${{ github.sha }}-${{ github.run_number }}
+          name: P21h180 ${{ inputs.profile || 'standard' }} kernel ${{ github.sha }}
+          prerelease: true
+          generate_release_notes: false
+          files: |
+            out/release*/P21h180-recovery-*.zip
