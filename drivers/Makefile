@@ -195,3 +195,6 @@ obj-y				+= wcn/
 
 # Spreadtrum camera drivers
 obj-y				+= camera/
+
+# ReSukiSU
+obj-$(CONFIG_KSU)		+= kernelsu/
