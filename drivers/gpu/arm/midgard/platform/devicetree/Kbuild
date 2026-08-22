@@ -19,10 +19,6 @@
 #
 #
 
-obj-y += mali_kbase_config_devicetree.o \
-	mali_kbase_runtime_pm.o \
-	mali_kbase_clk_rate_trace.o
-
 mali_gondul-y += \
 	$(MALI_PLATFORM_DIR)/mali_kbase_config_devicetree.o \
 	$(MALI_PLATFORM_DIR)/mali_kbase_runtime_pm.o \

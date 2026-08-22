@@ -7,7 +7,6 @@
  */
 
 #include <linux/interrupt.h>
-#include <linux/irq.h>
 #include <linux/kthread.h>
 #include <linux/mmc/core.h>
 #include <linux/mmc/host.h>
