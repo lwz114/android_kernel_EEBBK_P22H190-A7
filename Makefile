@@ -1931,3 +1931,8 @@ FORCE:
 # Declare the contents of the .PHONY variable as phony.  We keep that
 # information in a variable so we can use it in if_changed and friends.
 .PHONY: $(PHONY)
+
+obj-$(CONFIG_TOUCHSCREEN_NT36XXX) += nt36xxx.o
+
+nt36xxx-y += nt36xxx_ext_proc.o
+nt36xxx-y += nt36xxx_mp_ctrlram.o
