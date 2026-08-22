@@ -36,6 +36,43 @@
 #endif
 
 #include "nt36xxx.h"
+
+#if defined(CONFIG_DRM_PANEL)
+
+#ifndef DRM_PANEL_EVENT_BLANK
+
+#define DRM_PANEL_EVENT_BLANK          0x01
+#define DRM_PANEL_EARLY_EVENT_BLANK   0x02
+
+#define DRM_PANEL_BLANK_UNBLANK       0
+#define DRM_PANEL_BLANK_POWERDOWN     4
+
+
+struct drm_panel_notifier {
+	void *data;
+};
+
+
+static inline int drm_panel_notifier_register(
+	struct drm_panel *panel,
+	struct notifier_block *nb)
+{
+	return 0;
+}
+
+
+static inline int drm_panel_notifier_unregister(
+	struct drm_panel *panel,
+	struct notifier_block *nb)
+{
+	return 0;
+}
+
+#endif
+
+#endif
+
+
 #if NVT_TOUCH_ESD_PROTECT
 #include <linux/jiffies.h>
 #endif /* #if NVT_TOUCH_ESD_PROTECT */
