@@ -139,7 +139,7 @@ jobs:
         run: |
           set -euo pipefail
           rm -rf drivers/kernelsu
-          git clone --depth=1 -b main https://github.com/ReSukiSU/ReSukiSU.git drivers/kernelsu
+          git clone --depth=1 https://github.com/ReSukiSU/ReSukiSU.git drivers/kernelsu
           test -f drivers/kernelsu/Kconfig
 
       - name: Build recovery upgrade package
