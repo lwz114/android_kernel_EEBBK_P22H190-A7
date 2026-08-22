@@ -134,6 +134,14 @@ jobs:
           git clone --depth=1 https://github.com/osm0sis/AnyKernel3.git "$ANYKERNEL_DIR"
           test -f "$ANYKERNEL_DIR/anykernel.sh"
 
+      - name: Setup KernelSU source
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf drivers/kernelsu
+          git clone --depth=1 -b main https://github.com/ReSukiSU/ReSukiSU.git drivers/kernelsu
+          test -f drivers/kernelsu/Kconfig
+
       - name: Build recovery upgrade package
         shell: bash
         run: |
