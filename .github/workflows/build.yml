@@ -1,16 +1,8 @@
-name: Build P21H180/P21H170 kernel
+name: Build P21H170 kernel
 
 on:
   workflow_dispatch:
     inputs:
-      device:
-        description: Target device
-        type: choice
-        required: true
-        default: p21h180
-        options:
-          - p21h180
-          - p21h170
       profile:
         description: Build profile
         type: choice
@@ -24,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: ${{ inputs.device }}-${{ inputs.profile || 'standard' }}-${{ github.ref }}
+  group: p21h170-${{ inputs.profile || 'standard' }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -73,101 +65,53 @@ jobs:
       - name: Select build profile
         shell: bash
         env:
-          BUILD_DEVICE: ${{ inputs.device || 'p21h180' }}
           BUILD_PROFILE: ${{ inputs.profile || 'standard' }}
         run: |
           set -euo pipefail
           CLANG_DIR="$RUNNER_TEMP/clang-r383902/clang-r383902/bin"
           
-          case "$BUILD_DEVICE" in
-            p21h180)
-              case "$BUILD_PROFILE" in
-                standard)
-                  profile=p21h180
-                  defconfig=ums512-p21h180_defconfig
-                  build_dir="$GITHUB_WORKSPACE/out/ums512-p21h180"
-                  release_dir="$GITHUB_WORKSPACE/out/release"
-                  socko_template="$GITHUB_WORKSPACE/prebuilts/p21h180/socko.factory.img"
-                  build_script="./scripts/build-p21h180.sh"
-                  package_pattern="P21h180-recovery-*.zip"
-                  ;;
-                droidspaces)
-                  profile=droidspaces
-                  defconfig=ums512-p21h180_droidspaces_defconfig
-                  build_dir="$GITHUB_WORKSPACE/out/ums512-p21h180-droidspaces"
-                  release_dir="$GITHUB_WORKSPACE/out/release-droidspaces"
-                  socko_template="$GITHUB_WORKSPACE/prebuilts/p21h180/socko.factory.img"
-                  build_script="./scripts/build-p21h180.sh"
-                  package_pattern="P21h180-recovery-*.zip"
-                  ;;
-                *)
-                  echo "unsupported profile: $BUILD_PROFILE" >&2
-                  exit 2
-                  ;;
-              esac
+          case "$BUILD_PROFILE" in
+            standard)
+              profile=p21h170
+              defconfig=ums512-p21h170_defconfig
+              build_dir="$GITHUB_WORKSPACE/out/ums512-p21h170"
+              release_dir="$GITHUB_WORKSPACE/out/release-p21h170"
+              socko_template="$GITHUB_WORKSPACE/prebuilts/p21h170/socko.factory.img"
+              build_script="./scripts/build-p21h170.sh"
+              package_pattern="P21h170-recovery-*.zip"
               ;;
-            p21h170)
-              case "$BUILD_PROFILE" in
-                standard)
-                  profile=p21h170
-                  defconfig=ums512-p21h170_defconfig
-                  build_dir="$GITHUB_WORKSPACE/out/ums512-p21h170"
-                  release_dir="$GITHUB_WORKSPACE/out/release-p21h170"
-                  socko_template="$GITHUB_WORKSPACE/prebuilts/p21h170/socko.factory.img"
-                  build_script="./scripts/build-p21h170.sh"
-                  package_pattern="P21h170-recovery-*.zip"
-                  ;;
-                droidspaces)
-                  profile=p21h170-droidspaces
-                  defconfig=ums512-p21h170_droidspaces_defconfig
-                  build_dir="$GITHUB_WORKSPACE/out/ums512-p21h170-droidspaces"
-                  release_dir="$GITHUB_WORKSPACE/out/release-p21h170-droidspaces"
-                  socko_template="$GITHUB_WORKSPACE/prebuilts/p21h170/socko.factory.img"
-                  build_script="./scripts/build-p21h170.sh"
-                  package_pattern="P21h170-recovery-*.zip"
-                  ;;
-                *)
-                  echo "unsupported profile: $BUILD_PROFILE" >&2
-                  exit 2
-                  ;;
-              esac
+            droidspaces)
+              profile=p21h170-droidspaces
+              defconfig=ums512-p21h170_droidspaces_defconfig
+              build_dir="$GITHUB_WORKSPACE/out/ums512-p21h170-droidspaces"
+              release_dir="$GITHUB_WORKSPACE/out/release-p21h170-droidspaces"
+              socko_template="$GITHUB_WORKSPACE/prebuilts/p21h170/socko.factory.img"
+              build_script="./scripts/build-p21h170.sh"
+              package_pattern="P21h170-recovery-*.zip"
               ;;
             *)
-              echo "unsupported device: $BUILD_DEVICE" >&2
+              echo "unsupported profile: $BUILD_PROFILE" >&2
               exit 2
               ;;
           esac
           {
-            printf 'CLANG_DIR=%s
-' "$CLANG_DIR"
-            printf 'BUILD_PROFILE=%s
-' "$profile"
-            printf 'BUILD_DEFCONFIG=%s
-' "$defconfig"
-            printf 'BUILD_DIR=%s
-' "$build_dir"
-            printf 'RELEASE_DIR=%s
-' "$release_dir"
-            printf 'SOCKO_TEMPLATE=%s
-' "$socko_template"
-            printf 'BUILD_SCRIPT=%s
-' "$build_script"
-            printf 'PACKAGE_PATTERN=%s
-' "$package_pattern"
+            printf 'CLANG_DIR=%s\n' "$CLANG_DIR"
+            printf 'BUILD_PROFILE=%s\n' "$profile"
+            printf 'BUILD_DEFCONFIG=%s\n' "$defconfig"
+            printf 'BUILD_DIR=%s\n' "$build_dir"
+            printf 'RELEASE_DIR=%s\n' "$release_dir"
+            printf 'SOCKO_TEMPLATE=%s\n' "$socko_template"
+            printf 'BUILD_SCRIPT=%s\n' "$build_script"
+            printf 'PACKAGE_PATTERN=%s\n' "$package_pattern"
           } >> "$GITHUB_ENV"
-          printf 'device=%s
-profile=%s
-defconfig=%s
-build_dir=%s
-release_dir=%s
-' \
-            "$BUILD_DEVICE" "$profile" "$defconfig" "$build_dir" "$release_dir"
+          printf 'device=p21h170\nprofile=%s\ndefconfig=%s\nbuild_dir=%s\nrelease_dir=%s\n' \
+            "$profile" "$defconfig" "$build_dir" "$release_dir"
 
       - name: Install build and packaging dependencies
         run: |
           set -euo pipefail
           if [ -f /etc/apt/apt-mirrors.txt ]; then
-            sudo sed -i '|azure\.archive\.ubuntu\.com/ubuntu|d' /etc/apt/apt-mirrors.txt
+            sudo sed -i 's|azure\.archive\.ubuntu\.com/ubuntu||g' /etc/apt/apt-mirrors.txt
           fi
           sudo apt-get -o Acquire::Retries=2 -o Acquire::http::Timeout=30 update
           sudo apt-get -o Acquire::Retries=2 -o Acquire::http::Timeout=30 install -y \
@@ -222,7 +166,7 @@ release_dir=%s
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ inputs.device }}-${{ inputs.profile || 'standard' }}-packages-${{ github.sha }}
+          name: p21h170-${{ inputs.profile || 'standard' }}-packages-${{ github.sha }}
           path: |
             out/release*/*.zip
           if-no-files-found: warn
@@ -232,9 +176,10 @@ release_dir=%s
         if: github.event_name != 'pull_request' && success()
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ inputs.device }}-${{ inputs.profile || 'standard' }}-${{ github.sha }}-${{ github.run_number }}
-          name: ${{ inputs.device }} ${{ inputs.profile || 'standard' }} kernel ${{ github.sha }}
+          tag_name: p21h170-${{ inputs.profile || 'standard' }}-${{ github.sha }}-${{ github.run_number }}
+          name: P21H170 ${{ inputs.profile || 'standard' }} kernel ${{ github.sha }}
           prerelease: true
           generate_release_notes: false
           files: |
             out/release*/*.zip
+

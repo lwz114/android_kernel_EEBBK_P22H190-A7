@@ -1,5 +1,5 @@
 #
-# (C) COPYRIGHT 2012-2017, 2020 ARM Limited. All rights reserved.
+# (C) COPYRIGHT 2010-2019 ARM Limited. All rights reserved.
 #
 # This program is free software and is provided to you under the terms of the
 # GNU General Public License version 2 as published by the Free Software
@@ -17,13 +17,11 @@
 #
 # SPDX-License-Identifier: GPL-2.0
 #
-#
 
-obj-y += mali_kbase_config_devicetree.o \
-	mali_kbase_runtime_pm.o \
-	mali_kbase_clk_rate_trace.o
-
-mali_gondul-y += \
-	$(MALI_PLATFORM_DIR)/mali_kbase_config_devicetree.o \
-	$(MALI_PLATFORM_DIR)/mali_kbase_runtime_pm.o \
-	$(MALI_PLATFORM_DIR)/mali_kbase_clk_rate_trace.o
+ifdef CONFIG_MALI_PLATFORM_THIRDPARTY
+obj-y += $(patsubst %.c,%.o,$(wildcard $(src)/*/mali_kbase_config_*.c))
+else
+# Recursively compile selected platform directory
+platform_name := $(shell echo $(CONFIG_MALI_PLATFORM_NAME))
+obj-y += $(platform_name)/
+endif
