@@ -1259,6 +1259,11 @@ config TOUCHSCREEN_HIMAX_CHIPSET
           If unsure, say N.
 source "drivers/input/touchscreen/himax-ts/Kconfig"
 
+
+source "drivers/input/touchscreen/nt36xxx/Kconfig"
+
+
+
 config TOUCHSCREEN_CHIPONE
 	tristate "Chipone TDDI touchscreen for QualComm package"
 	depends on I2C
@@ -1294,3 +1299,11 @@ config TOUCHSCREEN_ILI9882N
 	  module will be called ili9882n-tddi.
 source "drivers/input/touchscreen/ili9882n/Kconfig"
 endif
+
+
+config TOUCHSCREEN_NT36XXX
+    tristate "Novatek NT36xxx touchscreen"
+    depends on I2C
+    depends on OF
+    help
+      Say Y or M here if you have a Novatek NT36xxx touchscreen.

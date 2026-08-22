@@ -640,6 +640,17 @@
 		tpd-filter-custom-speed = <0 0 0>;
 	};
 
+	novatek@62 {
+		compatible = "novatek,NVT-ts";
+		reg = <0x62>;
+
+		novatek,irq-gpio = <&eic_async 0 0>;
+		novatek,reset-gpio = <&ap_gpio 145 0>;
+
+		status = "okay";
+	};
+
+
 	/* alternate touch drivers present on the same bus (hardware absent) */
 	touchscreen@20 {
 		compatible = "synaptics,dsx";
