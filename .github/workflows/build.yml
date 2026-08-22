@@ -1,4 +1,4 @@
-name: Build P21H180 recovery upgrade
+name: Build P21H170 kernel
 
 on:
   workflow_dispatch:
@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: p21h180-${{ inputs.profile || 'standard' }}-${{ github.ref }}
+  group: p21h170-${{ inputs.profile || 'standard' }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -69,18 +69,25 @@ jobs:
         run: |
           set -euo pipefail
           CLANG_DIR="$RUNNER_TEMP/clang-r383902/clang-r383902/bin"
+          
           case "$BUILD_PROFILE" in
             standard)
-              profile=p21h180
-              defconfig=ums512-p21h180_defconfig
-              build_dir="$GITHUB_WORKSPACE/out/ums512-p21h180"
-              release_dir="$GITHUB_WORKSPACE/out/release"
+              profile=p21h170
+              defconfig=ums512-p21h170_defconfig
+              build_dir="$GITHUB_WORKSPACE/out/ums512-p21h170"
+              release_dir="$GITHUB_WORKSPACE/out/release-p21h170"
+              socko_template="$GITHUB_WORKSPACE/prebuilts/p21h170/socko.factory.img"
+              build_script="./scripts/build-p21h170.sh"
+              package_pattern="P21h170-recovery-*.zip"
               ;;
             droidspaces)
-              profile=droidspaces
-              defconfig=ums512-p21h180_droidspaces_defconfig
-              build_dir="$GITHUB_WORKSPACE/out/ums512-p21h180-droidspaces"
-              release_dir="$GITHUB_WORKSPACE/out/release-droidspaces"
+              profile=p21h170-droidspaces
+              defconfig=ums512-p21h170_droidspaces_defconfig
+              build_dir="$GITHUB_WORKSPACE/out/ums512-p21h170-droidspaces"
+              release_dir="$GITHUB_WORKSPACE/out/release-p21h170-droidspaces"
+              socko_template="$GITHUB_WORKSPACE/prebuilts/p21h170/socko.factory.img"
+              build_script="./scripts/build-p21h170.sh"
+              package_pattern="P21h170-recovery-*.zip"
               ;;
             *)
               echo "unsupported profile: $BUILD_PROFILE" >&2
@@ -89,20 +96,22 @@ jobs:
           esac
           {
             printf 'CLANG_DIR=%s\n' "$CLANG_DIR"
-            printf 'P21h180_PROFILE=%s\n' "$profile"
-            printf 'P21h180_DEFCONFIG=%s\n' "$defconfig"
+            printf 'BUILD_PROFILE=%s\n' "$profile"
+            printf 'BUILD_DEFCONFIG=%s\n' "$defconfig"
             printf 'BUILD_DIR=%s\n' "$build_dir"
             printf 'RELEASE_DIR=%s\n' "$release_dir"
-            printf 'SOCKO_TEMPLATE=%s\n' "$GITHUB_WORKSPACE/prebuilts/p21h180/socko.factory.img"
+            printf 'SOCKO_TEMPLATE=%s\n' "$socko_template"
+            printf 'BUILD_SCRIPT=%s\n' "$build_script"
+            printf 'PACKAGE_PATTERN=%s\n' "$package_pattern"
           } >> "$GITHUB_ENV"
-          printf 'profile=%s\ndefconfig=%s\nbuild_dir=%s\nrelease_dir=%s\n' \
+          printf 'device=p21h170\nprofile=%s\ndefconfig=%s\nbuild_dir=%s\nrelease_dir=%s\n' \
             "$profile" "$defconfig" "$build_dir" "$release_dir"
 
       - name: Install build and packaging dependencies
         run: |
           set -euo pipefail
           if [ -f /etc/apt/apt-mirrors.txt ]; then
-            sudo sed -i '\|azure\.archive\.ubuntu\.com/ubuntu|d' /etc/apt/apt-mirrors.txt
+            sudo sed -i 's|azure\.archive\.ubuntu\.com/ubuntu||g' /etc/apt/apt-mirrors.txt
           fi
           sudo apt-get -o Acquire::Retries=2 -o Acquire::http::Timeout=30 update
           sudo apt-get -o Acquire::Retries=2 -o Acquire::http::Timeout=30 install -y \
@@ -131,15 +140,15 @@ jobs:
           set -o pipefail
           mkdir -p out
           ANDROID_CLANG_DIR="$CLANG_DIR" \
-          P21h180_PROFILE="$P21h180_PROFILE" \
-          P21h180_DEFCONFIG="$P21h180_DEFCONFIG" \
-          P21h180_BUILD_DIR="$BUILD_DIR" \
-          P21h180_OUTPUT_DIR="$RELEASE_DIR" \
+          BUILD_PROFILE="$BUILD_PROFILE" \
+          BUILD_DEFCONFIG="$BUILD_DEFCONFIG" \
+          BUILD_DIR="$BUILD_DIR" \
+          BUILD_OUTPUT_DIR="$RELEASE_DIR" \
           SOCKO_TEMPLATE="$SOCKO_TEMPLATE" \
           ANYKERNEL_DIR="$ANYKERNEL_DIR" \
           KPM_PATCHER="$KPM_PATCHER" \
           JOBS="$(nproc)" \
-            ./scripts/build-p21h180.sh all 2>&1 | tee out/build.log
+            $BUILD_SCRIPT all 2>&1 | tee out/build.log
           test "${PIPESTATUS[0]}" -eq 0
 
       - name: Verify recovery upgrade package
@@ -148,7 +157,7 @@ jobs:
           set -euo pipefail
           ls -lh "$RELEASE_DIR"
           package=$(find "$RELEASE_DIR" -maxdepth 1 -type f \
-            -name 'P21h180-recovery-*.zip' -size +1c -print -quit)
+            -name '$PACKAGE_PATTERN' -size +1c -print -quit)
           test -n "$package"
           test "$(find "$RELEASE_DIR" -maxdepth 1 -type f -name '*.zip' | wc -l)" -eq 1
           sha256sum "$package"
@@ -157,9 +166,9 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: p21h180-${{ inputs.profile || 'standard' }}-packages-${{ github.sha }}
+          name: p21h170-${{ inputs.profile || 'standard' }}-packages-${{ github.sha }}
           path: |
-            out/release*/P21h180-recovery-*.zip
+            out/release*/*.zip
           if-no-files-found: warn
           compression-level: 0
 
@@ -167,9 +176,10 @@ jobs:
         if: github.event_name != 'pull_request' && success()
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: p21h180-${{ inputs.profile || 'standard' }}-${{ github.sha }}-${{ github.run_number }}
-          name: P21h180 ${{ inputs.profile || 'standard' }} kernel ${{ github.sha }}
+          tag_name: p21h170-${{ inputs.profile || 'standard' }}-${{ github.sha }}-${{ github.run_number }}
+          name: P21H170 ${{ inputs.profile || 'standard' }} kernel ${{ github.sha }}
           prerelease: true
           generate_release_notes: false
           files: |
-            out/release*/P21h180-recovery-*.zip
+            out/release*/*.zip
+

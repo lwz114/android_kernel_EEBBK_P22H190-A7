@@ -598,7 +598,7 @@ static void pm_callback_power_runtime_term(struct kbase_device *kbdev)
 }
 #endif/*CONFIG_PM_RUNTIME*/
 
-struct kbase_pm_callback_conf pm_sharkl5pro_callbacks = {
+struct kbase_pm_callback_conf pm_callbacks = {
 	.power_off_callback = pm_callback_power_off,
 	.power_on_callback = pm_callback_power_on,
 	.power_suspend_callback = pm_callback_power_suspend,
