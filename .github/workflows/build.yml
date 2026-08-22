@@ -65,12 +65,12 @@ jobs:
       - name: Select build profile
         shell: bash
         env:
-          BUILD_PROFILE: ${{ inputs.profile || 'standard' }}
+          BUILD_PROFILE_INPUT: ${{ inputs.profile || 'standard' }}
         run: |
           set -euo pipefail
           CLANG_DIR="$RUNNER_TEMP/clang-r383902/clang-r383902/bin"
-          
-          case "$BUILD_PROFILE" in
+
+          case "$BUILD_PROFILE_INPUT" in
             standard)
               profile=p21h170
               defconfig=ums512-p21h170_defconfig
@@ -78,28 +78,28 @@ jobs:
               release_dir="$GITHUB_WORKSPACE/out/release-p21h170"
               socko_template="$GITHUB_WORKSPACE/prebuilts/p21h170/socko.factory.img"
               build_script="./scripts/build-p21h170.sh"
-              package_pattern="P21h170-recovery-*.zip"
+              package_pattern="P21H170-recovery-*.zip"
               ;;
             droidspaces)
-              profile=p21h170-droidspaces
+              profile=droidspaces
               defconfig=ums512-p21h170_droidspaces_defconfig
               build_dir="$GITHUB_WORKSPACE/out/ums512-p21h170-droidspaces"
               release_dir="$GITHUB_WORKSPACE/out/release-p21h170-droidspaces"
               socko_template="$GITHUB_WORKSPACE/prebuilts/p21h170/socko.factory.img"
               build_script="./scripts/build-p21h170.sh"
-              package_pattern="P21h170-recovery-*.zip"
+              package_pattern="P21H170-recovery-*.zip"
               ;;
             *)
-              echo "unsupported profile: $BUILD_PROFILE" >&2
+              echo "unsupported profile: $BUILD_PROFILE_INPUT" >&2
               exit 2
               ;;
           esac
           {
             printf 'CLANG_DIR=%s\n' "$CLANG_DIR"
-            printf 'BUILD_PROFILE=%s\n' "$profile"
-            printf 'BUILD_DEFCONFIG=%s\n' "$defconfig"
-            printf 'BUILD_DIR=%s\n' "$build_dir"
-            printf 'RELEASE_DIR=%s\n' "$release_dir"
+            printf 'P21H170_PROFILE=%s\n' "$profile"
+            printf 'P21H170_DEFCONFIG=%s\n' "$defconfig"
+            printf 'P21H170_BUILD_DIR=%s\n' "$build_dir"
+            printf 'P21H170_OUTPUT_DIR=%s\n' "$release_dir"
             printf 'SOCKO_TEMPLATE=%s\n' "$socko_template"
             printf 'BUILD_SCRIPT=%s\n' "$build_script"
             printf 'PACKAGE_PATTERN=%s\n' "$package_pattern"
@@ -140,10 +140,10 @@ jobs:
           set -o pipefail
           mkdir -p out
           ANDROID_CLANG_DIR="$CLANG_DIR" \
-          BUILD_PROFILE="$BUILD_PROFILE" \
-          BUILD_DEFCONFIG="$BUILD_DEFCONFIG" \
-          BUILD_DIR="$BUILD_DIR" \
-          BUILD_OUTPUT_DIR="$RELEASE_DIR" \
+          P21H170_PROFILE="$P21H170_PROFILE" \
+          P21H170_DEFCONFIG="$P21H170_DEFCONFIG" \
+          P21H170_BUILD_DIR="$P21H170_BUILD_DIR" \
+          P21H170_OUTPUT_DIR="$P21H170_OUTPUT_DIR" \
           SOCKO_TEMPLATE="$SOCKO_TEMPLATE" \
           ANYKERNEL_DIR="$ANYKERNEL_DIR" \
           KPM_PATCHER="$KPM_PATCHER" \
@@ -155,11 +155,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          ls -lh "$RELEASE_DIR"
-          package=$(find "$RELEASE_DIR" -maxdepth 1 -type f \
-            -name '$PACKAGE_PATTERN' -size +1c -print -quit)
+          ls -lh "$P21H170_OUTPUT_DIR"
+          package=$(find "$P21H170_OUTPUT_DIR" -maxdepth 1 -type f \
+            -name "$PACKAGE_PATTERN" -size +1c -print -quit)
           test -n "$package"
-          test "$(find "$RELEASE_DIR" -maxdepth 1 -type f -name '*.zip' | wc -l)" -eq 1
+          test "$(find "$P21H170_OUTPUT_DIR" -maxdepth 1 -type f -name '*.zip' | wc -l)" -eq 1
           sha256sum "$package"
 
       - name: Upload build package artifact
@@ -182,4 +182,3 @@ jobs:
           generate_release_notes: false
           files: |
             out/release*/*.zip
-
